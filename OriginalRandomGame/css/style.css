@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/*** Reset ***/
+* {
+    margin: 0;
+    padding: 0;
+}
+/*************/
+
+.wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #3e8989;
+}
+
+#gameView {
+    display: flex;
+    flex-direction: column;
+    width: 80vh;
+    height: 80vh;
+    border: 10px solid #f15025;
+    background-color: #FAFAFA;
+}
+
+.gameViewRow {
+    display: flex;
+    flex: 1;
+}
+
+.gameViewRow:not(:first-child) {
+    border-top: 1px solid #9999a1;
+}
+
+.gameViewColumn {
+    flex: 1;
+}
+
+.gameViewColumn:not(:first-child) {
+    border-left: 1px solid #9999a1;
+}
+
+.wall {
+    background-color: #f15025;
+}
