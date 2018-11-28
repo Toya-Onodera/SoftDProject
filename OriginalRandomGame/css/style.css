@@ -45,3 +45,87 @@
 .wall {
     background-color: #f15025;
 }
+
+.myAvatar {
+    position: relative;
+    background-image: url("../image/MyAvatar.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.myAvatarArrowUp::before {
+    position: fixed;
+    content: "";
+    width: 0;
+    height: 0;
+    top: -28px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 5vh solid transparent;
+    border-bottom-color: #FAFAFA;
+}
+
+.myAvatarArrowDown::before {
+    position: fixed;
+    content: "";
+    width: 0;
+    height: 0;
+    bottom: -28px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 5vh solid transparent;
+    border-top-color: #FAFAFA;
+}
+
+.myAvatarArrowRight::before {
+    position: fixed;
+    content: "";
+    width: 0;
+    height: 0;
+    top: 0;
+    bottom: 0;
+    right: -34px;
+    margin: auto;
+    border: 5vh solid transparent;
+    border-left-color: #FAFAFA;
+}
+
+.myAvatarArrowLeft::before {
+    position: fixed;
+    content: "";
+    width: 0;
+    height: 0;
+    top: 0;
+    bottom: 0;
+    left: -34px;
+    margin: auto;
+    border: 5vh solid transparent;
+    border-right-color: #FAFAFA;
+}
+
+.goal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: #E9724C;
+}
+
+#tapArea {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
+
+#tapArea:active {
+    background-color: rgba(211, 212, 217, 0.2);
+}
