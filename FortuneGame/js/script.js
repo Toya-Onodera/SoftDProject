@@ -27,7 +27,7 @@ window.onload = () => {
     ]
 
     // ランダムの数字を設定 0 ~ 6
-    const randomIndex = Math.floor(Math.random() * (6 - 0 + 1) + 0)
+    const randomIndex = Math.floor(Math.random() * (6 - 0) + 0)
 
     // 運勢を設定
     let luckyElm = document.querySelector('.lucky')
