@@ -1,0 +1,206 @@
+/*
+    Google Fonts を利用する
+    @font-face を利用することによって
+    カスタムフォントを使用できる
+*/
+@font-face {
+    font-family: 'Noto Serif Japanese';
+    font-style: normal;
+    font-weight: 200;
+    src: url('fonts/NotoSerifCJKjp/NotoSerifCJKjp-ExtraLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Serif Japanese';
+    font-style: normal;
+    font-weight: 300;
+    src: url('fonts/NotoSerifCJKjp/NotoSerifCJKjp-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Serif Japanese';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/NotoSerifCJKjp/NotoSerifCJKjp-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Serif Japanese';
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/NotoSerifCJKjp/NotoSerifCJKjp-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Serif Japanese';
+    font-style: normal;
+    font-weight: 600;
+    src: url('fonts/NotoSerifCJKjp/NotoSerifCJKjp-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Serif Japanese';
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/NotoSerifCJKjp/NotoSerifCJKjp-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Serif Japanese';
+    font-style: normal;
+    font-weight: 900;
+    src: url('fonts/NotoSerifCJKjp/NotoSerifCJKjp-Black.otf') format('opentype');
+}
+
+/* デフォルトのスタイルを削除する */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Noto Serif Japanese", serif, san-serif;
+    overflow: hidden;
+}
+
+/***** おみくじのスタイル *****/
+/* おみくじを表示する全体の Warpper */
+.fortune-warp {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #F1E8B8;
+}
+
+/* おみくじを表示する全体の Warpper2 */
+.fortune-warp2 {
+    position: absolute;
+    width: 500px;
+    height: 700px;
+    padding-top: 24px;
+    overflow: hidden;                
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* おみくじの見出し */
+.fortune-warp h2 {
+    padding-top: 24px;
+    text-align: center;
+    font-size: 48px;
+}
+
+/* おみくじのスタイル部分 */
+.fortune-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 740px;
+    display: flex;
+    width: 320px;
+    height: 700px;
+    flex-direction: column;
+    background-color: #FAFAFA;
+    border: 12px double #2274A5;
+    text-align: center;
+    z-index: 100;
+    transition: margin-top 2s;
+}
+
+/* おみくじを表示する場合 */
+.fortune-main-show {
+    margin-top: 0;
+}
+
+/* 運勢のテキストの部分 */
+.lucky {
+    padding: 12px;
+    display: block;
+    font-size: 96px;
+    color: #F75C03;
+    font-weight: bold;
+    line-height: calc(320px - 40px);
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+}
+
+/* おみくじの文章の部分 */
+.document-warp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 10;
+    padding: 16px;
+    border-top: 4px solid #2274A5;
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    letter-spacing: 4px;       
+}
+
+/* 運勢のテキストが書かれている部分 */
+.document {
+    text-align: left;
+}
+
+/* おみくじの下の文字部分 */
+.author {
+    display: block;
+    text-align: center;
+    border-top: 4px solid #2274A5;
+}
+
+/* 穴の部分 */
+.fortune-hole {
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #424242;
+    border-radius: 1200px / 250px;
+    transform: translateY(350px);
+    z-index: 50;
+}
+
+/* おみくじを引くボタン */
+.draw-button {
+    position: absolute;
+    width: 80vw;
+    height: 20vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #91C7B1;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    outline: 5px dashed #FAFAFA;
+    outline-offset: -10px;
+}
+
+/* ボタンにマウスが乗ったら背景色を変える */
+.draw-button:hover {
+    background-color: #CC2936;
+}
+
+/* ボタンのテキスト */
+.draw-button-text {
+    display: block;
+    text-align: center;
+    font-size: 8vh;
+    color: #FAFAFA;
+}

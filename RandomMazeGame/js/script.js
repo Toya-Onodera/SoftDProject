@@ -6,14 +6,14 @@ class RandomMaze {
 
         // 迷路の高さ (row) 幅 (column) を設定
         this.size = size
-        
+
         // 迷路のマップデータを格納する
         // 「高さ * 幅」分の一次元配列を用意
         this.mazeMap = new Array(Math.pow(size + 1, 2))
-        
+
         // 自分の座標
         this.myIndex = 0;
-        
+
         // 矢印の方向を指定するクラスを格納する配列
         this.arrowClassArray = ['myAvatarArrowUp', 'myAvatarArrowDown', 'myAvatarArrowRight', 'myAvatarArrowLeft']
     }
@@ -53,14 +53,14 @@ class RandomMaze {
                 }
             }
         }
-        
+
         // 自分の位置を設定する
         this.mazeMap[this.myIndex] = 100;
-        
+
         // ゴールを設定する
         this.mazeMap[Math.pow(this.size + 1, 2) - 1] = -100;
     }
-    
+
     // 描画を行う前に行うメソッド
     reRenderInit () {
         this.elm.innerHTML = null
@@ -70,7 +70,7 @@ class RandomMaze {
     createMazeHtml () {
         // 一度初期化する
         this.reRenderInit()
-        
+
         let mazeHtmlElement = ''
 
         for (let i = 0; i <= this.size; i++) {
@@ -84,17 +84,17 @@ class RandomMaze {
                     if (this.mazeMap[mapIndex] === 0) {
                         return '<div class="gameViewColumn"></div>'
                     }
-                    
+
                     // 壁
                     else if (this.mazeMap[mapIndex] === 1) {
                         return '<div class="gameViewColumn wall"></div>'
                     }
-                    
+
                     // 自分
                     else if (this.mazeMap[mapIndex] === 100) {
                         return '<div class="gameViewColumn myAvatar"></div>'
                     }
-                    
+
                     // ゴール
                     else if (this.mazeMap[mapIndex] === -100) {
                         return '<div class="gameViewColumn goal"></div>'
@@ -107,21 +107,21 @@ class RandomMaze {
 
         this.elm.innerHTML = mazeHtmlElement
     }
-    
+
     // 自分のアバターを移動させる
     moveAvatar () {
         const firstClassName = this.arrowClassArray[3]
         let step = 0;
-        
+
         if (firstClassName === 'myAvatarArrowUp' && (this.myIndex - this.size) > 0) {
             step = -this.size - 1;
         }
-        
+
         // TODO: 下の移動条件を直す
         else if (firstClassName === 'myAvatarArrowDown' && this.myIndex <= Math.pow(this.size + 1, 2)) {
             step = this.size + 1;
         }
-        
+
         else if (firstClassName === 'myAvatarArrowRight' && this.myIndex % (this.size + 1) < this.size) {
             step = 1;
         }
@@ -129,28 +129,28 @@ class RandomMaze {
         else if (firstClassName === 'myAvatarArrowLeft' && this.myIndex % (this.size + 1) !== 0) {
             step = -1;
         }
-        
+
         // 自分の座標を更新
         if (this.mazeMap[this.myIndex + step] !== 1) {
             // 自分の座標をリセット
             this.mazeMap[this.myIndex] = 0
-            
+
             // 座標を変更する
             this.myIndex += step
-            
+
             // 変更後の座標に自分の座標をセット
             this.mazeMap[this.myIndex] = 100
         }
-        
+
         // 再描画
         this.createMazeHtml()
     }
-    
+
     // ゴール判定を行うメソッド
     isGoal () {
         return (this.myIndex === Math.pow(this.size + 1, 2) - 1)
     }
-    
+
     // ランダムで矢印を変更するメソッド
     arrowChange () {
         const arrowSet = this.arrowClassArray.shift()
@@ -163,29 +163,29 @@ class RandomMaze {
 window.onload = () => {
     // ゲームビューの要素
     const mazeElement = document.getElementById('gameView')
-    
+
     const rm = new RandomMaze(mazeElement, 14)
-    
+
     rm.stickDownMaze()
     rm.createMazeHtml()
-    
+
     const tapLayerElement = document.getElementById('tapArea')
     tapLayerElement.addEventListener('click', () => {
         rm.moveAvatar()
     })
-    
+
     // 矢印を変更する
     const arrowTimer = () => {
         if (!rm.isGoal()) {
             rm.arrowChange()
             setTimeout(arrowTimer, 700)
         }
-        
+
         else {
             alert("ゴール！！")
             tapLayerElement.parentNode.removeChild(tapLayerElement)
         }
     }
-    
+
     setTimeout(arrowTimer, 0)
 }
