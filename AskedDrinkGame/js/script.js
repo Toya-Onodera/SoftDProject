@@ -67,6 +67,4 @@ window.onload = () => {
     const rd = new RandomDrink(menuElements, drinkElement)
     rd.createMenu()
     rd.createDrink()
-
-
-}
+ßß}
